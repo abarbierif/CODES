@@ -1,0 +1,47 @@
+ Dfd (c)
+1
+1
+1
+0
+0
+6
+3
+4
+catA
+1
+0
+4
+catB
+1
+0
+10
+hipotenusa
+1
+0
+4
+1
+25
+'Ingrese el primer valor'
+5
+1
+4
+catA
+4
+1
+26
+'Ingrese el segundo valor'
+5
+1
+4
+catB
+6
+1
+10
+hipotenusa
+29
+sqrt((catA*catA)+(catB*catB))
+4
+1
+10
+hipotenusa
+1

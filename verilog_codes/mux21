@@ -1,0 +1,65 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000027cfc849930 .scope module, "mux21_tb" "mux21_tb" 2 1;
+ .timescale 0 0;
+v0000027cfc84b810_0 .var "d0", 0 0;
+v0000027cfc84b8b0_0 .var "d1", 0 0;
+v0000027cfc84b950_0 .var/i "i", 31 0;
+v0000027cfc84b9f0_0 .var "s", 0 0;
+v0000027cfc84ba90_0 .net "y", 0 0, L_0000027cfc847240;  1 drivers
+S_0000027cfc6d5120 .scope module, "dut" "mux21" 2 7, 3 1 0, S_0000027cfc849930;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "d0";
+    .port_info 1 /INPUT 1 "d1";
+    .port_info 2 /INPUT 1 "s";
+    .port_info 3 /OUTPUT 1 "y";
+L_0000027cfc6d5530 .functor NOT 1, v0000027cfc84b9f0_0, C4<0>, C4<0>, C4<0>;
+L_0000027cfc846f80 .functor AND 1, L_0000027cfc6d5530, v0000027cfc84b810_0, C4<1>, C4<1>;
+L_0000027cfc8470e0 .functor AND 1, v0000027cfc84b9f0_0, v0000027cfc84b8b0_0, C4<1>, C4<1>;
+L_0000027cfc847240 .functor OR 1, L_0000027cfc846f80, L_0000027cfc8470e0, C4<0>, C4<0>;
+v0000027cfc849ac0_0 .net *"_ivl_0", 0 0, L_0000027cfc6d5530;  1 drivers
+v0000027cfc846b00_0 .net *"_ivl_2", 0 0, L_0000027cfc846f80;  1 drivers
+v0000027cfc849b60_0 .net *"_ivl_4", 0 0, L_0000027cfc8470e0;  1 drivers
+v0000027cfc6d52b0_0 .net "d0", 0 0, v0000027cfc84b810_0;  1 drivers
+v0000027cfc6d5350_0 .net "d1", 0 0, v0000027cfc84b8b0_0;  1 drivers
+v0000027cfc6d53f0_0 .net "s", 0 0, v0000027cfc84b9f0_0;  1 drivers
+v0000027cfc6d5490_0 .net "y", 0 0, L_0000027cfc847240;  alias, 1 drivers
+    .scope S_0000027cfc849930;
+T_0 ;
+    %vpi_call 2 10 "$dumpfile", "mux21.vcd" {0 0 0};
+    %vpi_call 2 11 "$dumpvars" {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0000027cfc84b950_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v0000027cfc84b950_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/vec4 v0000027cfc84b950_0;
+    %pad/s 3;
+    %split/vec4 1;
+    %store/vec4 v0000027cfc84b810_0, 0, 1;
+    %split/vec4 1;
+    %store/vec4 v0000027cfc84b8b0_0, 0, 1;
+    %store/vec4 v0000027cfc84b9f0_0, 0, 1;
+    %delay 10, 0;
+    %vpi_call 2 17 "$display", "s = %b d1 = %b d0 = %b | y = %b", v0000027cfc84b9f0_0, v0000027cfc84b8b0_0, v0000027cfc84b810_0, v0000027cfc84ba90_0 {0 0 0};
+    %load/vec4 v0000027cfc84b950_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0000027cfc84b950_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "mux21_tb.v";
+    "mux21.v";

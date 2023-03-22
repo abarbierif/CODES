@@ -1,0 +1,93 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_0000020391fc6e80 .scope module, "ternarymux41_tb" "ternarymux41_tb" 2 1;
+ .timescale 0 0;
+v0000020391fd1750_0 .var "i", 3 0;
+v0000020391fd0e90_0 .var/i "n", 31 0;
+v0000020391fd19d0_0 .net "o", 0 0, L_0000020391fd1570;  1 drivers
+v0000020391fd0c10_0 .var "s", 1 0;
+S_0000020391fc72a0 .scope module, "dut" "ternarymux41" 2 8, 3 1 0, S_0000020391fc6e80;
+ .timescale 0 0;
+    .port_info 0 /INPUT 4 "a";
+    .port_info 1 /INPUT 2 "s";
+    .port_info 2 /OUTPUT 1 "y";
+v0000020391f86d90_0 .net *"_ivl_1", 0 0, L_0000020391fd1930;  1 drivers
+v0000020391fc7430_0 .net *"_ivl_11", 0 0, L_0000020391fd1390;  1 drivers
+v0000020391f8be50_0 .net *"_ivl_13", 0 0, L_0000020391fd0d50;  1 drivers
+v0000020391f8bef0_0 .net *"_ivl_15", 0 0, L_0000020391fd0fd0;  1 drivers
+v0000020391fc7800_0 .net *"_ivl_16", 0 0, L_0000020391fd1070;  1 drivers
+v0000020391fc78a0_0 .net *"_ivl_3", 0 0, L_0000020391fd17f0;  1 drivers
+v0000020391fc7940_0 .net *"_ivl_5", 0 0, L_0000020391fd1b10;  1 drivers
+v0000020391fd1a70_0 .net *"_ivl_7", 0 0, L_0000020391fd0f30;  1 drivers
+v0000020391fd1610_0 .net *"_ivl_8", 0 0, L_0000020391fd0cb0;  1 drivers
+v0000020391fd0df0_0 .net "a", 3 0, v0000020391fd1750_0;  1 drivers
+v0000020391fd1890_0 .net "s", 1 0, v0000020391fd0c10_0;  1 drivers
+v0000020391fd16b0_0 .net "y", 0 0, L_0000020391fd1570;  alias, 1 drivers
+L_0000020391fd1930 .part v0000020391fd0c10_0, 1, 1;
+L_0000020391fd17f0 .part v0000020391fd0c10_0, 0, 1;
+L_0000020391fd1b10 .part v0000020391fd1750_0, 3, 1;
+L_0000020391fd0f30 .part v0000020391fd1750_0, 2, 1;
+L_0000020391fd0cb0 .functor MUXZ 1, L_0000020391fd0f30, L_0000020391fd1b10, L_0000020391fd17f0, C4<>;
+L_0000020391fd1390 .part v0000020391fd0c10_0, 0, 1;
+L_0000020391fd0d50 .part v0000020391fd1750_0, 1, 1;
+L_0000020391fd0fd0 .part v0000020391fd1750_0, 0, 1;
+L_0000020391fd1070 .functor MUXZ 1, L_0000020391fd0fd0, L_0000020391fd0d50, L_0000020391fd1390, C4<>;
+L_0000020391fd1570 .functor MUXZ 1, L_0000020391fd1070, L_0000020391fd0cb0, L_0000020391fd1930, C4<>;
+    .scope S_0000020391fc6e80;
+T_0 ;
+    %vpi_call 2 11 "$dumpfile", "ternarymux41.vcd" {0 0 0};
+    %vpi_call 2 12 "$dumpvars" {0 0 0};
+    %vpi_call 2 14 "$display", "s1 s0 a3 a2 a1 a0 | y" {0 0 0};
+    %vpi_call 2 15 "$monitor", "%b  %b  %b  %b  %b  %b  | %b", &PV<v0000020391fd0c10_0, 1, 1>, &PV<v0000020391fd0c10_0, 0, 1>, &PV<v0000020391fd1750_0, 3, 1>, &PV<v0000020391fd1750_0, 2, 1>, &PV<v0000020391fd1750_0, 1, 1>, &PV<v0000020391fd1750_0, 0, 1>, v0000020391fd19d0_0 {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v0000020391fd0e90_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v0000020391fd0e90_0;
+    %cmpi/s 64, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/vec4 v0000020391fd0e90_0;
+    %pad/s 6;
+    %split/vec4 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0000020391fd1750_0, 4, 1;
+    %split/vec4 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0000020391fd1750_0, 4, 1;
+    %split/vec4 1;
+    %ix/load 4, 2, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0000020391fd1750_0, 4, 1;
+    %split/vec4 1;
+    %ix/load 4, 3, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0000020391fd1750_0, 4, 1;
+    %split/vec4 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0000020391fd0c10_0, 4, 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v0000020391fd0c10_0, 4, 1;
+    %delay 1, 0;
+    %load/vec4 v0000020391fd0e90_0;
+    %addi 1, 0, 32;
+    %store/vec4 v0000020391fd0e90_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "ternarymux41_tb.v";
+    "ternarymux41.v";

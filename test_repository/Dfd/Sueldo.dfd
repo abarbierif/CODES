@@ -1,0 +1,42 @@
+ Dfd (c)
+1
+1
+1
+0
+0
+6
+1
+6
+Sueldo
+1
+0
+4
+1
+25
+'Ingrese su sueldo bruto'
+5
+1
+6
+Sueldo
+7
+0
+1
+9
+Sueldo>=0
+4
+1
+43
+'Error, el sueldo no puede ser menor que 0'
+13
+6
+1
+6
+Sueldo
+10
+Sueldo*0.8
+4
+1
+31
+'Su sueldo liquido es ', Sueldo
+13
+1

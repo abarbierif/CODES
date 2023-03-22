@@ -1,0 +1,60 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001af78cd5260 .scope module, "andgate_tb" "andgate_tb" 2 1;
+ .timescale 0 0;
+v000001af78cd5580_0 .var "i", 2 0;
+v000001af78cd5620_0 .var/i "n", 31 0;
+v000001af78dc6700_0 .net "o", 0 0, L_000001af78dc67a0;  1 drivers
+S_000001af78cd53f0 .scope module, "dut" "andgate" 2 7, 3 1 0, S_000001af78cd5260;
+ .timescale 0 0;
+    .port_info 0 /INPUT 3 "a";
+    .port_info 1 /OUTPUT 1 "y";
+v000001af78dc8060_0 .net "a", 2 0, v000001af78cd5580_0;  1 drivers
+v000001af78dc70f0_0 .net "y", 0 0, L_000001af78dc67a0;  alias, 1 drivers
+L_000001af78dc67a0 .reduce/and v000001af78cd5580_0;
+    .scope S_000001af78cd5260;
+T_0 ;
+    %vpi_call 2 10 "$dumpfile", "andgate.vcd" {0 0 0};
+    %vpi_call 2 11 "$dumpvars" {0 0 0};
+    %vpi_call 2 13 "$display", "a2 a1 a0 | y" {0 0 0};
+    %vpi_call 2 14 "$monitor", "%b  %b  %b  | %b", &PV<v000001af78cd5580_0, 2, 1>, &PV<v000001af78cd5580_0, 1, 1>, &PV<v000001af78cd5580_0, 0, 1>, v000001af78dc6700_0 {0 0 0};
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001af78cd5620_0, 0, 32;
+T_0.0 ;
+    %load/vec4 v000001af78cd5620_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz T_0.1, 5;
+    %load/vec4 v000001af78cd5620_0;
+    %pad/s 3;
+    %split/vec4 1;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v000001af78cd5580_0, 4, 1;
+    %split/vec4 1;
+    %ix/load 4, 1, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v000001af78cd5580_0, 4, 1;
+    %ix/load 4, 2, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v000001af78cd5580_0, 4, 1;
+    %delay 10, 0;
+    %load/vec4 v000001af78cd5620_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001af78cd5620_0, 0, 32;
+    %jmp T_0.0;
+T_0.1 ;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "andgate_tb.v";
+    "andgate.v";
